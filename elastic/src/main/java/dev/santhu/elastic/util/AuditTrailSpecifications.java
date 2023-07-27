@@ -1,6 +1,5 @@
 package dev.santhu.elastic.util;
 
-import co.elastic.clients.elasticsearch._types.aggregations.Aggregate;
 import co.elastic.clients.elasticsearch._types.aggregations.Aggregation;
 import dev.santhu.elastic.constants.FilterConstants;
 import lombok.extern.slf4j.Slf4j;
@@ -24,10 +23,6 @@ public class AuditTrailSpecifications {
                 .terms(terms-> terms
                         .field(FilterConstants.FILTER_STATUS)
                         .size(aggSize))));
-//        aggregationMap.put(FilterConstants.FILTER_LABEL_MIN_DATE, Aggregation.of(builder -> builder
-//                .min(min-> min.field(FilterConstants.FILTER_TIME_STAMP))));
-//        aggregationMap.put(FilterConstants.FILTER_LABEL_MAX_DATE, Aggregation.of(builder -> builder
-//                .max(max-> max.field(FilterConstants.FILTER_TIME_STAMP))));
         aggregationMap.put(FilterConstants.FILTER_LABEL_MIN_AMOUNT, Aggregation.of(builder -> builder
                 .min(min-> min.field(FilterConstants.FILTER_AMOUNT))));
         aggregationMap.put(FilterConstants.FILTER_LABEL_MAX_AMOUNT, Aggregation.of(builder -> builder
@@ -44,7 +39,6 @@ public class AuditTrailSpecifications {
         aggregationMap.put(FilterConstants.FILTER_LABEL_COUNTRY, Aggregation.of(builder -> builder.terms(terms-> terms
                 .field(FilterConstants.FILTER_COUNTRY)
                 .size(aggSize))));
-
         aggregationMap.put(FilterConstants.FILTER_LABEL_SHOPID, Aggregation.of(builder -> builder.terms(terms-> terms
                 .field(FilterConstants.FILTER_SHOPID)
                 .size(aggSize))));
